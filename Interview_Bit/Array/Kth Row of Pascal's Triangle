@@ -1,0 +1,19 @@
+int binomial(int n, int k)
+{
+    int res = 1; 
+    if (k > n - k) 
+    k = n - k; 
+    for (int i = 0; i < k; ++i) 
+    { 
+        res *= (n - i); 
+        res /= (i + 1); 
+    } 
+      
+    return res; 
+}
+vector<int> Solution::getRow(int n) {
+    vector<int> v;
+    for(int i = 0; i <= n ; i++)
+        v.push_back(binomial(n,i));
+return v;
+}

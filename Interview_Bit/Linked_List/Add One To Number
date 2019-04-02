@@ -1,0 +1,49 @@
+vector<int> Solution::plusOne(vector<int> &A) {
+     int n;
+     n = A.size();
+     int i=0;
+     while( n > 1 && i < n)
+    {
+            if(A[i] == 0)
+            {
+                vector<int>::iterator it; 
+  
+                it = A.begin()+0;
+                A.erase(it);
+                n--;
+            }
+            else
+            {
+                break;
+            }
+            
+            
+    }
+    n = A.size();
+    i = n-1;
+    int k =0;
+ 
+        do
+        {
+            if((A[i]+1) == 10)
+            {
+                A[i] = 0;
+                i--;
+                k++;
+            }
+            else
+            {
+                A[i] =A[i]+1;  
+                break;
+            }
+        }while(i>=0);
+        
+        if(k == n)
+        {
+            vector<int>v (n+1,0);
+            v[0]=1;
+            return v;
+        }
+        
+   return A;
+}

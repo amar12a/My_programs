@@ -1,0 +1,35 @@
+#include<vector>
+using namespace std;
+int main()
+ {
+    int T;
+    cin>>T;
+	for(int i =0;i < T; i++)
+	{
+	    int n;
+	    cin>>n;
+	    vector<int> v;
+	    for(int i = 0; i < n; i++)
+	    {
+	        int ip;
+	        cin>>ip;
+	        v.push_back(ip);
+	    }
+	    int max = -1;
+	    vector<int> temp;
+	    for(int i =n-1; i>= 0; i--)
+	    {
+	        if(v[i] >= max)
+	        {
+	            temp.push_back(v[i]);
+	            max =v[i];
+	        }
+	    }
+	    for(int i = temp.size()-1; i>=0; i--)
+	    {
+	        cout<<temp[i]<<" ";
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}

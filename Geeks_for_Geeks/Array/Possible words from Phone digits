@@ -1,0 +1,81 @@
+#include<vector>
+#include<string.h>
+using namespace std;
+int main()
+ {
+    int T;
+    cin>>T;
+	for(int i =0;i < T; i++)
+	{
+	    int n;
+	    cin>>n;
+	    string ar[10]={"*","*","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+	    vector<int> v;
+	    for(int i = 0; i < n; i++)
+	    {
+	        int ip;
+	        cin>>ip;
+	        v.push_back(ip);
+	    }
+	    if(n>=2)
+	    {
+	        vector<string> prev;
+	        vector<string> snew;
+	        string s1 = ar[v[0]];
+	        for(int k = 1; k < v.size(); k++)
+	        {
+	        string s2 = ar[v[k]];
+	        int n1,n2;
+	        if(k == 1)
+	            n1 = s1.length();
+	        else
+	            n1 = snew.size();
+	        n2 = s2.length();
+	        snew.clear();
+	        for(int i = 0; i < n1; i++)
+	        { 
+	            
+	            for(int j = 0; j < n2; j++)
+	            {
+	                  string ss(1,s2[j]);
+	                 
+	                if(k == 1)
+	                {
+	                    string sf(1,s1[i]);
+	                    string str;
+	                    str = sf+ss;
+	                    //cout<<str<<"-";
+	                    snew.push_back(str);
+	                }
+	                else
+	                {
+	                    string str;
+	                    str = prev[i]+ss;
+	                    //cout<<str<<" ";
+	                    snew.push_back(str);
+	                }
+	            }
+	           //cout<<endl;
+	        }
+	        //cout<<snew.size()<<endl;
+	         prev=snew;    
+	    }
+	  for(int i = 0; i< snew.size(); i++)
+	  {
+	      cout<<snew[i]<<" ";
+	  }
+	  cout<<endl;
+	}
+	else
+	{
+	    string str =ar[v[0]];
+	    for(int i =0; i<str.length(); i++)
+	    {
+	        cout<<str[i]<<" ";
+	    }
+	    cout<<endl;
+	}
+	    
+	}
+	return 0;
+}

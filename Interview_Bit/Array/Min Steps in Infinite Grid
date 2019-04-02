@@ -1,0 +1,74 @@
+int Solution::coverPoints(vector<int> &A, vector<int> &B) 
+{
+    int sum = 0;
+    int n = A.size();
+   for(int i = 0; i <= n-2; i++)
+   {
+       int x1,x2,y1,y2;
+       x1=A[i];
+       x2=A[i+1];
+       y1=B[i];
+       y2=B[i+1];
+      int d1=0;
+      int d2=0;
+            if (x1 > x2 && y1 > y2 )
+            {
+                d1 = abs(x1-x2);
+                d2= abs(y1-y2);
+                if(d1>d2)
+                    sum+=d1;
+                else
+                    sum+=d2;
+            }
+            else if (x1 < x2 && y1 < y2 )
+            {
+                d1 = abs(x2-x1);
+                d2= abs(y2-y1);
+                if(d1>d2)
+                    sum+=d1;
+                else
+                    sum+=d2;
+            }
+            else if (x1 == x2 && y1 > y2 )
+            {
+                d1 = abs(y1-y2);
+                sum+=d1;
+            }
+            else if (x1 > x2 && y1 == y2 )
+            {
+                d1 = abs(x1-x2);
+                sum+=d1;
+            }
+            else if (x1 == x2 && y1 < y2 )
+            {
+                d1 = abs(y2-y1);
+                sum+=d1;
+            }
+            else if (x1 < x2 && y1 == y2 )
+            {
+                d1 = abs(x2-x1);
+                sum+=d1;
+            }
+            else if (x1 > x2 && y1 < y2 )
+            {
+                d1 = abs(x1-x2);
+                d2= abs(y2-y1);
+               // cout<<d1<<d2;
+                if(d1>d2)
+                    sum+=d1;
+                else
+                    sum+=d2;
+            }
+            else if (x1 < x2 && y1 > y2 )
+            {
+                d1 = abs(x2-x1);
+                d2= abs(y1-y2);
+                if(d1>d2)
+                    sum+=d1;
+                else
+                    sum+=d2;
+            }
+       
+   }
+   return sum;
+}

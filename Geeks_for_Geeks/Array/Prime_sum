@@ -1,0 +1,36 @@
+//interview bit
+vector<int> Solution::primesum(int A) {
+    vector<int> v;
+    vector<bool> prime;
+    for(int i =2; i <= A; i++)
+    {
+        prime.push_back(true);
+    }
+    prime[0]=false;
+    prime[1]=false;
+    for(int i = 2; i*i <= A; i++ )
+    {
+        if(prime[i] == true)
+        {
+        
+            for(int j = i*i; j <= A; j=j+i)
+            {
+                prime[j]=false;
+            }
+        }
+    }
+   
+    int i = 2;
+   
+    while(i < A)
+    {
+        if(prime[i] && prime[A-i])
+        {
+            v.push_back(i);
+            v.push_back(A-i);
+            break;
+        }
+      i++;  
+    }
+    return v;
+}

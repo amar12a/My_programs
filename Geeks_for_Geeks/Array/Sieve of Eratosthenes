@@ -1,0 +1,32 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+ {
+    int T;
+    cin>>T;
+	for(int i =0;i < T; i++)
+	{
+	    int n;
+	    cin>>n;
+	    bool ar[n+1];
+	    memset(ar,true,sizeof(ar));
+	    ar[0]=false;
+	    ar[1]=false;
+	    for(int i = 2; i*i <= n; i++)
+	    {
+	        if(ar[i] == true)
+	        for(int j =i*i; j<=n; j+=i )
+	        {
+	            ar[j]=false;
+	        }
+	    }
+	    for(int i = 2; i <= n; i++)
+	    {
+	        if(ar[i]==true)
+	            cout<<i<<" ";
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}

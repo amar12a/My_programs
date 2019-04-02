@@ -1,0 +1,16 @@
+int Solution::titleToNumber(string str) {
+   int n =  str.length();
+   int k = 0;
+   //int t = n;
+   int num = 0;
+   while(n)
+   {
+       int temp = pow(26,k);
+       char ch = str[n-1];
+        int a = ch;
+       num += (temp * ((a%65) + 1));
+       k++;
+       n--;
+   }
+   return num;
+}

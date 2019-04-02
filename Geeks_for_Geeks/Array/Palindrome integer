@@ -1,0 +1,19 @@
+//interview bit
+int Solution::isPalindrome(int n) {
+    if(n < 0)
+        return 0;
+    int t = n;
+    int num = 0;
+    while(t)
+    {
+        int r = t%10;
+        num = num*10+r;
+        t = t / 10;
+    }
+    //cout<<num<<" ";
+    if(num == n)
+        return 1;
+    else
+        return 0;
+    
+}

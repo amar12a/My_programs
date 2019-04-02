@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int max(int a, int b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+
+}
+
+int lcs(string str1 , string str2, int l1, int l2)
+{
+	int max_val;
+	if (l1 == 0 || l2 == 0) 
+    	return 0; 
+   	if (str1[l1-1] == str2[l2-1])
+	{
+    		return 1 + lcs(str1, str2, l1-1, l2-1);
+	}
+	 else 
+	{
+		max_val = max(lcs(str1, str2, l1, l2-1), lcs(str1, str2, l1-1, l2));
+		return max_val;
+	}
+}
+
+int scs(string str1, string str2, int l1, int l2)
+{
+    int l = lcs(str1, str2, l1, l2);
+    return (l1+l2-l);  
+}
+
+int main()
+{
+	string str1 ,str2;
+	int l1,l2;
+	cout << "Enter first string : ";
+	cin >> str1;
+	cout << "Enter second string : ";
+	cin >> str2;
+	l1 = strlen(str1.c_str());
+	l2 = strlen(str2.c_str());
+	
+	cout << "Length of the shortest Common Supersequence is : ";
+	int op = scs(str1,str2,l1,l2);
+	cout << op;
+
+	return 0;	
+}

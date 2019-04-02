@@ -1,0 +1,36 @@
+#include<vector>
+#include <iostream>
+#include <algorithm>
+#include<math.h>
+using namespace std;
+
+int main() {
+	long long int n;
+	long long  int sum = 0;
+	const unsigned int M = 1000000007;
+	cin >> n;	
+	vector<long long int > a;
+	vector<long long int> b;
+	long long int ip;
+	for(int i = 0;i < n; i++)
+	{
+	    cin>>ip;
+	    a.push_back(ip);
+	}
+	for(int i = 0;i < n; i++)
+	{
+	    cin>>ip;
+	    b.push_back(ip);
+	}
+	sort(a.begin(),a.end());
+	sort(b.begin(),b.end());
+	for(int i = 0;i < n; i++)
+	{
+	    if(a[i] > b[i])
+	    sum = (sum%M + (a[i]-b[i])%M)%M;
+	    else
+	    sum = (sum%M + (b[i] - a[i])%M)%M;
+	}
+	cout<<sum;
+}
+

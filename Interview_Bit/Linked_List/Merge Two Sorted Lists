@@ -1,0 +1,86 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+ ListNode* getnode(int val)
+ {
+     ListNode *temp = (ListNode *)malloc(sizeof(ListNode));
+     temp->next = NULL;
+     temp->val = val;
+     
+     return temp;
+ }
+ListNode* Solution::mergeTwoLists(ListNode* a, ListNode* b) {
+    ListNode* c = NULL;
+    ListNode* temp = NULL;
+    while(a || b)
+    {
+        if(a == NULL)
+        {
+            if(c == NULL)
+            {
+               c = getnode(b->val);
+               b = b->next;
+               temp = c; 
+            }
+            else
+            {
+                temp->next = getnode(b->val);
+                b = b->next;
+                temp = temp->next;
+            }
+        }
+        else if(b == NULL)
+        {
+            if(c == NULL)
+            {
+                c = getnode(a->val);
+                a = a->next;
+                temp = c; 
+            }
+            else
+            {
+                temp->next = getnode(a->val);
+                a = a->next;
+                temp = temp->next;
+            }
+        }
+        else if(a->val <= b->val)
+        {
+            if(c == NULL)
+            {
+                c = getnode(a->val);
+                a = a->next;
+                temp = c;
+            }
+            else
+            {
+                temp->next = getnode(a->val);
+                a = a->next;
+                temp = temp->next;
+            }
+            
+        }
+        else
+        {
+            if(c == NULL)
+            {
+                c = getnode(b->val);
+                b = b->next;
+                temp = c;
+            }
+            else
+            {
+                temp->next = getnode(b->val);
+                b = b->next;
+                temp = temp->next;
+            }
+            
+        }
+    }
+    return c;
+}

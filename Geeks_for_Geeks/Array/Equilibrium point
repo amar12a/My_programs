@@ -1,0 +1,40 @@
+#include<vector>
+using namespace std;
+int main()
+ {
+    int T;
+    cin>>T;
+	for(int i =0;i < T; i++)
+	{
+	    int n;
+	    cin>>n;
+	    int sum =0;
+	    vector<int> v;
+	    for(int i =0; i< n; i++)
+	    {
+	       int ip;
+	       cin>>ip;
+	       sum+=ip;
+	       v.push_back(ip);
+	    }
+	    //cout<<sum<<" ";
+	    int isum = 0;
+	    int k =0;
+	    for(k = 0; k < n; k++)
+	    {
+	        if(isum == (sum - (v[k]+isum)))
+	        {
+	            break;
+	        }
+	        isum+=v[k];
+	               
+	    }
+	    if(k >= n)
+	        cout<<"-1"<<endl;
+	    else
+	        cout<<(k+1)<<endl;
+	    
+	    
+	}
+	return 0;
+}

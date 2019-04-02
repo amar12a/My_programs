@@ -1,0 +1,46 @@
+#include<vector>
+using namespace std;
+int main()
+ {
+    int T;
+    cin>>T;
+	for(int i =0;i < T; i++)
+	{
+	    int n,s;
+	    cin>>n>>s;
+	    int flag =0;
+	    int v[n];
+	    int sum =0;
+	    int p=-1,q=-1;
+	    for(int i = 0; i < n ; i++)
+	    {
+	        int ip;
+	        cin>>ip;
+	        v[i] = ip;
+	    }
+	    for(int i =0; i < n; i++)
+	    {sum = 0;
+	        p = i;
+	        for(int j = i; j <n; j++)
+	        {
+	            sum+=v[j];
+	            //cout<<sum<<" ";
+	            if(sum == s)
+	            {
+	                flag = 1;
+	                q =j;  
+	                break;
+	            }
+	            if(sum > s)
+	                break;
+	        }//cout<<endl;
+	        if(flag == 1)
+	            break;
+	    }
+	    if(flag == 1)
+	        cout<<p+1<<" "<<q+1<<endl;
+	    else
+	        cout<<"-1"<<endl;
+	}
+	return 0;
+}
