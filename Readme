@@ -1,9 +1,3 @@
 This repository Contain solution to problem solved at various platform like Hacker_Rank, Hacker_Earth, GeeksForGeeks, InterviewBit etc.
 #include <iostream>
 using namespace std;
-
-int main() 
-{
-    cout << "Hello, World!";
-    return 0;
-}
