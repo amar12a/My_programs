@@ -1,0 +1,42 @@
+int Solution::isPalindrome(string s) 
+{
+    int n = s.length();
+    int l = n-1;
+    int f = 0;
+    for(int i = 0; i < n; i++)
+    {
+        if(isalpha (s[i]) )
+        {
+            s[i] = tolower(s[i]);
+        }
+    }
+    for(int i = 0; l >= i; i++)
+    {
+        while(!( isalpha(s[l])||isdigit(s[l]) ) )
+        {
+                l--;
+        }
+        if((isalpha(s[i])||isdigit(s[i]) )&& ( isalpha(s[l])||isdigit(s[l]) ) && l>=0)
+        {
+           //cout<<s[i]<<" "<<s[l]<<endl;
+            if(s[i] != s[l])
+            {
+                f = 1;
+                break;
+            }
+            l--;
+        }
+        else
+        {
+            while(!( isalpha(s[l])||isdigit(s[l]) ) )
+            {
+                l--;
+            }
+            continue;
+        }
+    }
+    if(f == 1)
+        return 0;
+    else
+        return 1;
+}
