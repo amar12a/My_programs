@@ -1,0 +1,27 @@
+
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+/*structure of a node of the linked list is as
+struct Node
+{
+	int data;
+	struct Node* next;
+};
+*/
+// Function should return 0 is length is even else return 1
+int isLengthEvenOrOdd(struct Node* head)
+{
+     struct Node * temp = head;
+     int cnt =0;
+     while(temp)
+     {
+         cnt++;
+         temp = temp->next;
+     }
+     if(cnt%2 == 0)
+        return 0;
+    else
+        return 1;
+}
