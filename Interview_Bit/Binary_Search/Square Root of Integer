@@ -1,0 +1,20 @@
+int binary_search(int s, int n, int f)
+{
+    int mid = (s + n) / 2;
+    if(s > n)
+        return n;
+    if(f == pow(mid,2))
+        return mid;
+    else if(f < pow(mid,2))
+    {
+        binary_search(s,mid-1,f);
+    }
+    else
+    {
+        binary_search(mid+1,n,f);
+    }
+}
+int Solution::sqrt(int A) {
+int n = A;
+    return binary_search(0,n,A);
+}
