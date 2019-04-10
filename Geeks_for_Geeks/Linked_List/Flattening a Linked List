@@ -1,0 +1,72 @@
+
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+/* Node structure  used in the program
+struct Node{
+	int data;
+	struct Node * next;
+	struct Node * bottom ;
+}; */
+/*  Function which returns the  root of 
+    the flattened linked list. */
+Node* getnode(int data)
+{
+    struct Node* temp =(struct Node*)malloc(sizeof(struct Node));
+    temp->data=data;
+    temp->next=NULL;
+    temp->bottom=NULL;
+    
+    return temp;
+}
+Node *flatten(Node *root)
+{
+   struct Node* temp = root;
+   vector<int> v;
+   while(temp)
+   {
+       struct Node* temp1 = temp;
+       while(temp1)
+       {
+           v.push_back(temp1->data);
+          //cout<<temp1->data<<" ";
+           temp1 = temp1->bottom;
+       }
+       temp = temp->next;
+   }
+   sort(v.begin(),v.end());
+   /*
+   for(int i = 0; i < v.size(); i++)
+   {
+       cout<<v[i]<<"->";
+   }*/
+  // cout<<endl;
+   int n=v.size();
+   struct Node* head=NULL;
+   int k = 0;
+   struct Node* prev= NULL;
+   temp = head;
+   while(k != n)
+   {
+       if(head == NULL)
+       {
+            head = getnode(v[k]);
+            //cout<<"H"<<""<<head->data<<" ";
+       }
+        else if(head->bottom == NULL)
+        {
+            head->bottom = getnode(v[k]);
+            prev =head->bottom ;
+            //cout<<"HN"<<""<<prev->data<<" ";
+        }
+        else
+        {
+            prev->bottom = getnode(v[k]);
+            prev = prev->bottom;
+            //cout<<"else"<<""<<prev->data<<" ";
+        }
+        k++;
+   }
+   return head;
+}
