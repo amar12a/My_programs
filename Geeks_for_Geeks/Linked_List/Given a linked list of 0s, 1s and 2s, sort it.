@@ -1,0 +1,37 @@
+void sortList(Node *head)
+{
+    int zeros = 0,ones = 0,twos = 0;
+    
+    struct Node* temp = head;
+    while(temp)
+    {
+        if(temp->data == 0)
+            zeros++;
+        else if(temp->data == 1)
+            ones++;
+        else
+            twos++;
+        temp = temp->next;
+        //cout<<zeros<<ones<<twos<<" ";
+    }
+    temp = head;
+    while(temp)
+    {
+        if(zeros)
+        {
+            temp->data=0;
+            zeros--;
+        }
+        else if(ones)
+        {
+            temp->data = 1;
+            ones--;
+        }
+        else 
+        {
+            temp->data = 2;
+            twos--;
+        }
+        temp = temp->next;
+    }
+}
