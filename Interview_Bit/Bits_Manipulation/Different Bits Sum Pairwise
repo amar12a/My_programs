@@ -1,0 +1,19 @@
+#define MOD 1000000007
+int Solution::cntBits(vector<int> &A) {
+long long int diff = 0;
+int n = A.size();
+long long int cnt = 0;
+for(int i = 0; i < 31; i++)
+{
+    cnt = 0;
+    for(int j = 0; j < A.size(); j++)
+    {
+        if(A[j] & (1<<i))
+        {
+            cnt++;
+        }
+    }
+    diff= (diff + ((cnt)*(n-cnt)*2))%MOD;
+}
+return int(diff);
+}
