@@ -1,0 +1,115 @@
+
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+/*  the node structure is as follows 
+struct Node
+{
+int data;
+Node* next;
+Node* arb;
+};*/
+// Should return the head of the copied linked list the 
+//output will be 1 if successfully copied
+Node * copyList(Node *head)
+{
+    struct Node* temp = head;
+    struct Node* newhead = NULL;
+    while(temp)
+    {
+        if(newhead == NULL)
+            newhead =newNode(temp->data);
+        else
+        {
+            struct Node* temp1 = newhead;
+            while(temp1->next)
+            {
+                temp1 = temp1->next;
+            }
+            temp1->next = newNode(temp->data);
+        }
+        temp = temp->next;
+    }
+    struct Node* temp1 =newhead;
+    temp = head;
+    while(temp)
+    {
+        if(temp->arb)
+        {
+            int f = temp->arb->data;
+            struct Node* t=newhead;
+            while(t->data!=f)
+            {
+                t = t->next;
+            }
+            temp1->arb = t;
+        }
+        temp1 = temp1->next;
+        temp = temp->next;
+    }
+    /*
+    struct Node* nxt, *prev;
+    nxt = head;
+    prev = NULL;
+    temp = head;
+    struct Node *temp1 = newhead;
+    while(nxt)
+    {
+        prev = nxt;
+        nxt = nxt->next;
+        prev->next = temp1;
+        if(prev->arb)
+            temp1->arb = prev;
+        temp1 = temp1->next;
+
+
+    }*/
+    /*
+    temp = newhead;
+    temp1 =head;
+    while(temp)
+    {
+        if(temp1->arb == NULL)
+            temp->arb = NULL;
+        temp = temp->next;
+        temp1 = temp1->next;
+    }
+    
+    temp1 = newhead;
+
+    while(temp1)
+    {
+        if(temp1->arb)
+        {
+            if(temp1->arb->arb)
+                temp1->arb = temp1->arb->arb->next;
+        }
+        temp1= temp1->next;
+    }
+    
+    temp = newhead;
+    
+    int cnt = 0;
+    while(temp)
+    {
+        if(temp->arb == NULL)
+          cout<<temp<<" "<<"NULL"<<"->";
+        else
+            cout<<temp<<" "<<temp->arb<<"->";
+        temp = temp->next;
+        //temp1 = temp1->next;
+        cnt++;
+    }
+    cout<<cnt<<"/";
+    temp1 =head;
+    cnt =0;
+    while(temp1!=NULL)
+	{
+		cnt++;
+		temp1=temp1->next;
+	}
+	cout<<cnt<<"--";*/
+    return newhead;
+    
+}
