@@ -1,0 +1,30 @@
+int Solution::lengthOfLastWord(const string str) {
+    int n = str.length();
+    //if(n == 0)
+        //return 0;
+    int l = 0;
+    int ll = 0;
+    char ch = ' ';
+    int i = 0;
+    int f = 0;
+    while(n--)
+    {
+        ch = str[i++];
+        if(isalpha(ch))
+        {
+            f = 1;
+            l++;
+        }
+        if(ch == ' ' && f == 1)
+        {
+            f = 0;
+            ll = l;
+            l = 0;
+        }
+        //cout<<l<<" ";   
+    }
+    if( l == 0)
+        l = ll;
+    //cout<<l-1<<" ";
+return l;
+}
