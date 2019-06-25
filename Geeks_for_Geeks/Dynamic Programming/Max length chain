@@ -1,0 +1,34 @@
+/*
+The structure to use is as follows
+struct val{
+	int first;
+	int second;
+};*/
+int mycompare(val p, val q)
+{
+    return p.first < q.first;
+}
+int maxChainLen(struct val p[],int n)
+{
+    sort(p,p+n,mycompare);
+    int mil[n];
+    for(int i = 0; i < n; i++)
+    {
+        mil[i] = 1;
+    }
+    int maxm = INT_MIN;
+    for(int i = 1; i < n; i++)
+    {
+        for(int j = 0; j < i; j++)
+        {
+            if(p[i].first > p[j].second && mil[i] < mil[j]+1)
+                mil[i] = mil[j]+1;
+        }
+    }
+    for(int i = 0; i < n; i++)
+    {
+        if(maxm < mil[i])
+                maxm = mil[i];
+    }
+    return maxm;
+}
