@@ -1,0 +1,32 @@
+#include<vector>
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ {
+    int T;
+    cin>>T;
+	for(int i =0;i < T; i++)
+	{
+	    int n;
+	    cin>>n;
+	    int ar[10]={1, 2, 5, 10, 20, 50, 100, 200, 500, 2000};
+	    while(n != 0)
+	    {
+	        for(int i = 10; i >= 0; i--)
+	        {
+	            int a = n/ar[i];
+	            if(a == 0)
+	                continue;
+	            while(a--)
+	            {
+	                cout<<ar[i]<<" ";
+	            }
+	            n = n%ar[i];
+	            if(n == 0)
+	                break;
+	        }
+	    }
+	   cout<<endl; 
+	}
+	return 0;
+}
